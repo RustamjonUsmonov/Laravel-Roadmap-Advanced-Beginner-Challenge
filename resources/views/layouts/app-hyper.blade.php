@@ -89,9 +89,6 @@
                         <div class="page-title-right">
                             <ol class="breadcrumb m-0" style="background-color: transparent !important;">
                                 @yield('breadcrumb')
-                                {{--<li class="breadcrumb-item"><a href="#">Hyper</a></li>
-                                    <li class="breadcrumb-item"><a href="#">Icons</a></li>
-                                    <li class="breadcrumb-item active">Unicons</li>--}}
                             </ol>
                         </div>
                         <h4 class="page-title">@yield('page-title', 'Dashboard')</h4>

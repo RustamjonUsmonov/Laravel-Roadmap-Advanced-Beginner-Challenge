@@ -30,7 +30,7 @@ class ProjectFactory extends Factory
             'client_id' => $clientIds[rand(0, count($clientIds) - 1)],
             'start_date' => $this->faker->dateTimeBetween('now', '+1 year'),
             'due_date' => $this->faker->dateTimeBetween('+1 year', '+2 years'),
-            'avatar' => $this->faker->imageUrl()
+            'avatar' => 'https://www.gettyimages.com/gi-resources/images/500px/983794168.jpg'
         ];
     }
 }

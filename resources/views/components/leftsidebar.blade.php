@@ -23,17 +23,10 @@
             <div class="collapse" id="sidebarProjects">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="apps-projects-list.html">List</a>
+                        <a href="{{route('projects.index')}}">List</a>
                     </li>
                     <li>
-                        <a href="apps-projects-details.html">Details</a>
-                    </li>
-                    <li>
-                        <a href="apps-projects-gantt.html">Gantt <span
-                                class="badge rounded-pill badge-dark-lighten text-dark font-10 float-end">New</span></a>
-                    </li>
-                    <li>
-                        <a href="apps-projects-add.html">Create Project <span
+                        <a href="{{route('projects.create')}}">Create Project <span
                                 class="badge rounded-pill badge-success-lighten font-10 float-end">New</span></a>
                     </li>
                 </ul>
@@ -50,7 +43,7 @@
             <div class="collapse" id="sidebarTasks">
                 <ul class="side-nav-second-level">
                     <li>
-                        <a href="apps-tasks.html">List</a>
+                        <a href="#">List</a>
                     </li>
                     <li>
                         <a href="apps-tasks-details.html">Details</a>
