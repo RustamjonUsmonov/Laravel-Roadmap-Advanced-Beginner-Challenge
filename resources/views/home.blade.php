@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.app-hyper')
 
 @section('content')
 <div class="container">
