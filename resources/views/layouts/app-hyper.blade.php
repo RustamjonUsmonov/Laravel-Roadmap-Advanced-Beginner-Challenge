@@ -94,6 +94,13 @@
                         <h4 class="page-title">@yield('page-title', 'Dashboard')</h4>
                     </div>
                 </div>
+                @if(session('message'))
+                    <div class="col-12">
+                        <div role="alert" class="alert rounded-pill badge-success-lighten font-20 text-center">
+                            <i class="mdi mdi-bookmark-check-outline"></i> {{session('message')}}
+                        </div>
+                    </div>
+                @endif
                 @yield('content')
 
             </div>

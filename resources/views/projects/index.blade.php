@@ -53,7 +53,7 @@
                                 </a>
                                 <div class="dropdown-menu dropdown-menu-end" style="">
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
+                                    <a href="{{route('projects.edit',$project->id)}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
                                     <!-- item-->

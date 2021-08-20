@@ -45,7 +45,7 @@ class ProjectController extends Controller
      */
     public function store(ProjectRequest $request): RedirectResponse
     {
-        $project=Project::create([
+        $project = Project::create([
             'title' => $request->title,
             'descr' => $request->descr,
             'start_date' => Carbon::create($request->start_date),
@@ -58,10 +58,8 @@ class ProjectController extends Controller
             Storage::disk('public_uploads')->putFileAs('/images',
                 $avatar,
                 Auth::id() . '_' . now()->format('Y-m-d_H_s') . '.' . $avatar->getClientOriginalExtension());
-            $project->update(['avatar'=>Auth::id() . '_' . now()->format('Y-m-d_H_s') . '.' . $avatar->getClientOriginalExtension()]);
+            $project->update(['avatar' => Auth::id() . '_' . now()->format('Y-m-d_H_s') . '.' . $avatar->getClientOriginalExtension()]);
         }
-
-
         return redirect()->route('projects.index')->with(['message' => 'Successfully created']);
     }
 
@@ -82,9 +80,10 @@ class ProjectController extends Controller
      * @param \App\Models\Project $project
      * @return Response
      */
-    public function edit(Project $project)
+    public function edit(int $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('projects.edit', compact($project));
     }
 
     /**
