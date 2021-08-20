@@ -42,6 +42,7 @@
                                        placeholder="Enter project budget">
                             </div>
 
+{{--
                             <div class="mb-3">
                                 <label for="project-overview" class="form-label">Team Members</label>
 
@@ -106,6 +107,7 @@
                                 </div>
 
                             </div>
+--}}
 
                         </div> <!-- end col-->
 
@@ -113,8 +115,6 @@
                             <div class="mb-3 mt-3 mt-xl-0">
                                 <label for="avatar" class="form-label">Preview </label>
                                 <p class="text-muted font-14">Recommended thumbnail size 800x400 (px).</p>
-
-
                                 <input type="file" id="avatar" class="form-control" name="avatar">
                             </div>
 

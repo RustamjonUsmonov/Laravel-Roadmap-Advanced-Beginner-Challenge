@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProjectRequest;
 use App\Models\Project;
+use Carbon\Carbon;
 use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 
 class ProjectController extends Controller
 {
@@ -25,22 +30,39 @@ class ProjectController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return Response
+     * @return Application|Factory|View
      */
     public function create()
     {
-        return  view('projects.create');
+        return view('projects.create');
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @return Response
+     * @param ProjectRequest $request
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(ProjectRequest $request): RedirectResponse
     {
-        //
+        $project=Project::create([
+            'title' => $request->title,
+            'descr' => $request->descr,
+            'start_date' => Carbon::create($request->start_date),
+            'due_date' => Carbon::create($request->due_date),
+            'budget' => (int)$request->budget,
+            'client_id' => Auth::id()
+        ]);
+        $avatar = $request->file('avatar');
+        if (isset($avatar)) {
+            Storage::disk('public_uploads')->putFileAs('/images',
+                $avatar,
+                Auth::id() . '_' . now()->format('Y-m-d_H_s') . '.' . $avatar->getClientOriginalExtension());
+            $project->update(['avatar'=>Auth::id() . '_' . now()->format('Y-m-d_H_s') . '.' . $avatar->getClientOriginalExtension()]);
+        }
+
+
+        return redirect()->route('projects.index')->with(['message' => 'Successfully created']);
     }
 
     /**
