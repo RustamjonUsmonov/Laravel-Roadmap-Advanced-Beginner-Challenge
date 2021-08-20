@@ -55,7 +55,9 @@
                                     <!-- item-->
                                     <a href="{{route('projects.edit',$project->id)}}" class="dropdown-item"><i class="mdi mdi-pencil me-1"></i>Edit</a>
                                     <!-- item-->
-                                    <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                                    <a href="{{route('projects.destroy',$project->id)}}" class="dropdown-item"><i class="mdi mdi-delete me-1"></i>Delete</a>
+                                    <!-- item-->
+                                    <a href="{{route('projects.show',$project->id)}}" class="dropdown-item"><i class="mdi mdi-eye-check me-1"></i>Show</a>
                                     <!-- item-->
                                     <a href="javascript:void(0);" class="dropdown-item"><i class="mdi mdi-email-outline me-1"></i>Invite</a>
                                     <!-- item-->
@@ -67,7 +69,7 @@
                                 <a href="apps-projects-details.html" class="text-title">{{$project->title}}</a>
                             </h4>
 
-                            <p class="text-muted font-13 mb-3">{{$project->descr}}<a href="javascript:void(0);" class="fw-bold text-muted">view
+                            <p class="text-muted font-13 mb-3">{{$project->descr}}<a href="{{route('projects.show',$project->id)}}" class="fw-bold text-muted">view
                                     more</a>
                             </p>
                             <!-- project detail-->

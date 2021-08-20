@@ -9,7 +9,6 @@ use Illuminate\Contracts\Foundation\Application;
 use Illuminate\Contracts\View\Factory;
 use Illuminate\Contracts\View\View;
 use Illuminate\Http\RedirectResponse;
-use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
@@ -69,43 +68,60 @@ class ProjectController extends Controller
      * @param \App\Models\Project $project
      * @return Response
      */
-    public function show(Project $project)
+    public function show(int $id)
     {
-        //
+        $project = Project::findOrFail($id);
+        return view('projects.show', compact('project'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param \App\Models\Project $project
-     * @return Response
+     * @param int $id
+     * @return Application|Factory|View
      */
     public function edit(int $id)
     {
         $project = Project::findOrFail($id);
-        return view('projects.edit', compact($project));
+        return view('projects.edit', compact('project'));
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param \App\Models\Project $project
-     * @return Response
+     * @param ProjectRequest $request
+     * @param int $id
+     * @return RedirectResponse
      */
-    public function update(Request $request, Project $project)
+    public function update(ProjectRequest $request, int $id): RedirectResponse
     {
-        //
+        $project = Project::findOrFail($id)->update([
+            'title' => $request->title,
+            'descr' => $request->descr,
+            'start_date' => Carbon::create($request->start_date),
+            'due_date' => Carbon::create($request->due_date),
+            'budget' => (int)$request->budget,
+            'client_id' => Auth::id()
+        ]);
+        $avatar = $request->file('avatar');
+        if (isset($avatar)) {
+            Storage::disk('public_uploads')->putFileAs('/images',
+                $avatar,
+                Auth::id() . '_' . now()->format('Y-m-d_H_s') . '.' . $avatar->getClientOriginalExtension());
+            $project->update(['avatar' => Auth::id() . '_' . now()->format('Y-m-d_H_s') . '.' . $avatar->getClientOriginalExtension()]);
+        }
+        return redirect()->route('projects.index')->with(['message' => 'Successfully updated']);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param \App\Models\Project $project
+     * @param int $id
      * @return Response
      */
-    public function destroy(Project $project)
+    public function destroy(int $id): Response
     {
-        //
+        Project::findOrFail($id)->delete();
+        return redirect()->route('projects.index')->with(['message' => 'Successfully deleted']);
     }
 }

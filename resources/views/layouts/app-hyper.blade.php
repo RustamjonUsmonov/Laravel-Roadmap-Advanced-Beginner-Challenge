@@ -102,7 +102,7 @@
                     </div>
                 @endif
                 @if ($errors->any())
-                    <div class="alert rounded-pill badge-danger-lighten font-15">
+                    <div class="alert badge-danger-lighten font-15">
                         <ul>
                             @foreach ($errors->all() as $error)
                                 <li>{{ $error }}</li>
