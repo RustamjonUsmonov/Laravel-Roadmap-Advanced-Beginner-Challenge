@@ -96,9 +96,18 @@
                 </div>
                 @if(session('message'))
                     <div class="col-12">
-                        <div role="alert" class="alert rounded-pill badge-success-lighten font-20 text-center">
+                        <div role="alert" class="alert badge-success-lighten font-20 text-center">
                             <i class="mdi mdi-bookmark-check-outline"></i> {{session('message')}}
                         </div>
+                    </div>
+                @endif
+                @if ($errors->any())
+                    <div class="alert rounded-pill badge-danger-lighten font-15">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                                <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
                     </div>
                 @endif
                 @yield('content')

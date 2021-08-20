@@ -41,7 +41,7 @@
                     <!-- project card -->
                     <div class="card d-block">
                         <!-- project-thumbnail -->
-                        <img class="card-img-top" src="{{asset('uploads/images/'.$project->avatar??'assets/images/no-image.jpg')}}" alt="project image cap">
+                        <img class="card-img-top" src="{{$project->avatar?asset('uploads/images/'.$project->avatar):asset('uploads/images/983794168.jpg')}}" alt="project image cap">
                         <div class="card-img-overlay">
                             <div class="badge bg-secondary text-light p-1">Ongoing</div>
                         </div>

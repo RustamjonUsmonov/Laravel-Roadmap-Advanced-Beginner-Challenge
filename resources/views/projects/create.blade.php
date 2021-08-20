@@ -17,29 +17,51 @@
                         <div class="col-xl-6">
                             <div class="mb-3">
                                 <label for="projectname" class="form-label">Title</label>
-                                <input type="text" id="projectname" class="form-control" name="title"
-                                       placeholder="Enter project title">
+                                <input type="text" id="projectname" class="form-control @error('title') is-invalid @enderror" name="title"
+                                       placeholder="Enter project title" value="{{old('title')}}">
+                                @error('title')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="project-overview" class="form-label">Overview</label>
-                                <textarea class="form-control" id="project-overview" name="descr" rows="5"
-                                          placeholder="Enter some brief about project.."></textarea>
+                                <label for="descr" class="form-label">Overview</label>
+                                <textarea class="form-control @error('descr') is-invalid @enderror" id="descr" name="descr" rows="5"
+                                          placeholder="Enter brief about project..">
+                                    {{old('descr')}}
+                                </textarea>
+                                @error('descr')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <!-- Date View -->
                             <div class="mb-3 position-relative" id="datepicker1">
                                 <label class="form-label">Start Date</label>
-                                <input type="text" class="form-control" name="start_date"
+                                <input type="text" class="form-control @error('start_date') is-invalid @enderror" name="start_date"
                                        data-provide="datepicker"
                                        data-date-container="#datepicker1" data-date-format="d-M-yyyy"
                                        data-date-autoclose="true">
+                                @error('start_date')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
-                                <label for="project-budget" class="form-label">Budget</label>
-                                <input type="text" id="project-budget" name="budget" class="form-control"
-                                       placeholder="Enter project budget">
+                                <label for="budget" class="form-label">Budget</label>
+                                <input type="text" id="budget" name="budget" class="form-control @error('budget') is-invalid @enderror"
+                                       placeholder="Enter project budget" value="{{old('budget')}}">
+                                @error('budget')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
 {{--
@@ -122,10 +144,15 @@
                             <!-- Date View -->
                             <div class="mb-3 position-relative" id="datepicker2">
                                 <label class="form-label">Due Date</label>
-                                <input type="text" name="due_date" class="form-control"
+                                <input type="text" name="due_date" class="form-control @error('due_date') is-invalid @enderror"
                                        data-provide="datepicker"
                                        data-date-container="#datepicker2" data-date-format="d-M-yyyy"
                                        data-date-autoclose="true">
+                                @error('due_date')
+                                <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
 
                             <div class="mb-3">
