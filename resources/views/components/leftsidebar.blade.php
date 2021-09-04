@@ -45,12 +45,6 @@
                     <li>
                         <a href="{{route('tasks.index')}}">List</a>
                     </li>
-                    <li>
-                        <a href="apps-tasks-details.html">Details</a>
-                    </li>
-                    <li>
-                        <a href="apps-kanban.html">Kanban Board</a>
-                    </li>
                 </ul>
             </div>
         </li>
@@ -71,7 +65,7 @@
             <a href="{{route('logout')}}" class="side-nav-link"
                onclick="event.preventDefault();
               document.getElementById('logout-form').submit();">
-                <i class="uil-exit "></i>
+                <i class="uil-exit text-danger"></i>
                 <span> Logout </span>
             </a>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
