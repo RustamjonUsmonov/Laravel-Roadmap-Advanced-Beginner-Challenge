@@ -50,13 +50,13 @@
         </li>
 
         <li class="side-nav-item">
-            <a href="#" class="side-nav-link">
+            <a href="{{route('users.index')}}" class="side-nav-link">
                 <i class="uil-folder-plus"></i>
                 <span> Users </span>
             </a>
         </li>
         <li class="side-nav-item">
-            <a href="#" class="side-nav-link">
+            <a href="{{route('clients.index')}}" class="side-nav-link">
                 <i class="uil-folder-plus"></i>
                 <span> Clients </span>
             </a>

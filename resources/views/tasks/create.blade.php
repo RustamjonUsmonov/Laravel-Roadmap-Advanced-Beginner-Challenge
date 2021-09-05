@@ -45,7 +45,7 @@
                             <p class="text-muted font-13">
                                 Please write task details properly:
                             </p>
-                            <textarea data-toggle="maxlength" class="form-control"
+                            <textarea data-toggle="maxlength" class="form-control" name="descr"
                                       maxlength="225" rows="3"
                                       placeholder="This textarea has a limit of 225 chars." required></textarea>
                         </div>

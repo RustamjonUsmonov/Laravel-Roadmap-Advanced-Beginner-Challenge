@@ -65,8 +65,8 @@ class ProjectController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param \App\Models\Project $project
-     * @return Response
+     * @param int $id
+     * @return Application|Factory|View
      */
     public function show(int $id)
     {

@@ -23,6 +23,7 @@ Auth::routes();
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::view('/index', 'layouts.index');
 Route::group(['middleware' => 'auth'], function () {
+    Route::get('/users', App\Http\Controllers\UserController::class)->name('users.index');
     Route::resource('projects', \App\Http\Controllers\ProjectController::class);
     Route::resource('tasks', \App\Http\Controllers\TaskController::class);
     Route::resource('clients', \App\Http\Controllers\ClientController::class);
